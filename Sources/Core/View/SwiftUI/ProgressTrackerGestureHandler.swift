@@ -33,7 +33,8 @@ class ProgressTrackerGestureHandler: ProgressTrackerGestureHandling {
     let frame: CGRect
     let disabledIndeces: Set<Int>
 
-    init(currentPageIndex: Binding<Int>, currentTouchedPageIndex: Binding<Int?>,
+    init(currentPageIndex: Binding<Int>,
+         currentTouchedPageIndex: Binding<Int?>,
          indicators: [CGRect],
          frame: CGRect,
          disabledIndices: Set<Int>

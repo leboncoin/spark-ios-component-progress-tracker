@@ -29,7 +29,6 @@ struct ProgressTrackerConfigurationSnapshotTests {
 
     let frame: CGRect?
 
-
     init(scenario: ProgressTrackerScenarioSnapshotTests,
          intent: ProgressTrackerIntent,
          variant: ProgressTrackerVariant,

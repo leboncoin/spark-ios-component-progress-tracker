@@ -122,8 +122,7 @@ class ProgressTrackerUITouchHandler: ProgressTrackerUITouchHandling {
     /// Return the index of the indicator closest the current page
     fileprivate func trackingIndex(closestTo location: CGPoint) -> Int? {
         if let index = self.indicatorViews.index(closestTo: location), index != self.currentPageIndex {
-            let trackingPageIndex = index < self.currentPageIndex ? max(0, self.currentPageIndex - 1) : min(self.numberOfPages - 1, self.currentPageIndex + 1)
-            return trackingPageIndex
+            return index < self.currentPageIndex ? max(0, self.currentPageIndex - 1) : min(self.numberOfPages - 1, self.currentPageIndex + 1)
         }
         return nil
     }
@@ -216,9 +215,7 @@ final class ProgressTrackerContinuousUITouchHandler: ProgressTrackerUITouchHandl
               index != trackingPageIndex else
         { return nil }
 
-        let nextTrackingPageIndex = index < trackingPageIndex ? max(0, trackingPageIndex - 1) : min(self.numberOfPages - 1, trackingPageIndex + 1)
-
-        return nextTrackingPageIndex
+        return index < trackingPageIndex ? max(0, trackingPageIndex - 1) : min(self.numberOfPages - 1, trackingPageIndex + 1)
     }
 
 }

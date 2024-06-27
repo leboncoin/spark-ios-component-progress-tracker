@@ -11,7 +11,7 @@ import XCTest
 @testable import SparkProgressTracker
 @_spi(SI_SPI) @testable import SparkProgressTrackerTesting
 @_spi(SI_SPI) import SparkCommon
-import SparkThemingTesting
+@_spi(SI_SPI) import SparkThemingTesting
 
 final class ProgressTrackerTrackViewModelTests: XCTestCase {
 

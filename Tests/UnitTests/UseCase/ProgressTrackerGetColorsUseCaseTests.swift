@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import SparkProgressTracker
 @_spi(SI_SPI) @testable import SparkProgressTrackerTesting
-import SparkThemingTesting
+@_spi(SI_SPI) import SparkThemingTesting
 
 final class ProgressTrackerGetColorsUseCaseTests: XCTestCase {
 

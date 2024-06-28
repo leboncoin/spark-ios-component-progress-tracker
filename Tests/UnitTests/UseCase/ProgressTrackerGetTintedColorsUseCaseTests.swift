@@ -9,7 +9,7 @@
 import XCTest
 @testable import SparkProgressTracker
 import SparkTheming
-import SparkThemingTesting
+@_spi(SI_SPI) import SparkThemingTesting
 
 final class ProgressTrackerGetTintedColorsUseCaseTests: XCTestCase {
 

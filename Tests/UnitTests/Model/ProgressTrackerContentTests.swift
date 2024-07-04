@@ -221,8 +221,8 @@ final class ProgressTrackerContentTests: XCTestCase {
         let sut = ProgressTrackerContent<ProgressTrackerUIIndicatorContent>(numberOfPages: 2, currentPageIndex: 1, showDefaultPageNumber: false)
 
         // THEN
-        XCTAssertEqual(sut.getIndicatorAccessibilityLabel(atIndex: 0), "1", "Expected label 0 to be 1")
-        XCTAssertEqual(sut.getIndicatorAccessibilityLabel(atIndex: 1), "2", "Expected label 1 to be 2")
+        XCTAssertNil(sut.getIndicatorAccessibilityLabel(atIndex: 0), "Expected accessibility label to be nil")
+        XCTAssertNil(sut.getIndicatorAccessibilityLabel(atIndex: 1), "Expected accessibility label to be nil")
     }
 
     func test_accessibility_label_with_content() {

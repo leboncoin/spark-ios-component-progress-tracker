@@ -115,7 +115,6 @@ struct ProgressTrackerHorizontalView: View {
                 self.label(label, at: index)
             } else {
                 self.indicator(at: index)
-                    .accessibilityLabel(self.viewModel.content.getIndicatorAccessibilityLabel(atIndex: index))
             }
         }
     }

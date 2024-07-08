@@ -335,9 +335,7 @@ public final class ProgressTrackerUIControl: UIControl {
             indicator.translatesAutoresizingMaskIntoConstraints = false
             indicator.isEnabled = !self.viewModel.disabledIndices.contains(index)
             indicator.isUserInteractionEnabled = false
-            indicator.accessibilityIdentifier = AccessibilityIdentifier.indicator(forIndex: index)
-            indicator.accessibilityValue = "\(index)"
-            indicator.isAccessibilityElement = true
+            indicator.isAccessibilityElement = false
             indicator.accessibilityLabel = content.getIndicatorAccessibilityLabel(atIndex: index)
             return indicator
         }
@@ -367,25 +365,6 @@ public final class ProgressTrackerUIControl: UIControl {
 
     private func setItemsAccessibilityTraits(disabledIndices: Set<Int>, currentPageIndex: Int) {
 
-        if self.viewModel.content.hasLabel {
-            let buttons = zip(self.indicatorViews, self.labels)
-            for (indicatorContainerView, button) in zip(indicatorContainerViews, buttons) {
-                indicatorContainerView.accessibilityElements = [button.0, button.1]
-                indicatorContainerView.shouldGroupAccessibilityChildren = true
-                indicatorContainerView.isAccessibilityElement = true
-
-                indicatorContainerView.accessibilityLabel = button.1.accessibilityLabel ?? button.0.accessibilityLabel
-            }
-        } else {
-            for (indicatorContainerView, indicatorView) in zip(self.indicatorContainerViews, self.indicatorViews) {
-                indicatorContainerView.accessibilityElements = [indicatorView]
-                indicatorContainerView.shouldGroupAccessibilityChildren = true
-                indicatorContainerView.isAccessibilityElement = true
-
-                indicatorContainerView.accessibilityLabel = indicatorView.accessibilityLabel
-            }
-        }
-
         for (index, indicator) in self.indicatorContainerViews.enumerated() {
             self.setItemAccessibilityTraits(view: indicator, index: index, disabledIndices: disabledIndices, currentPageIndex: currentPageIndex)
         }
@@ -396,12 +375,21 @@ public final class ProgressTrackerUIControl: UIControl {
         view.accessibilityIdentifier = AccessibilityIdentifier.indicator(forIndex: index)
         view.accessibilityValue = "\(index)"
         view.isAccessibilityElement = true
+        view.shouldGroupAccessibilityChildren = true
+
+        let contentViews: [UIView?] = [self.indicatorViews[index], self.labels[safe: index]]
+        view.accessibilityLabel = contentViews
+            .compacted()
+            .flatMap(\.accessibilityLabel)
+            .joined(separator: ", ")
 
         if self.interactionState == .none {
             view.accessibilityTraits.remove(.button)
+            view.accessibilityTraits.insert(.staticText)
             view.accessibilityRespondsToUserInteraction = false
         } else {
             view.accessibilityTraits.insert(.button)
+            view.accessibilityTraits.remove(.staticText)
             view.accessibilityRespondsToUserInteraction = true
         }
 

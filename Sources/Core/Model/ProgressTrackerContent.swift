@@ -183,7 +183,7 @@ struct ProgressTrackerContent<ComponentContent: ProgressTrackerContentIndicating
         return self.content[index]?.label
     }
 
-    func getIndicatorAccessibilityLabel(atIndex index: Int) -> String {
-        return self.getIndicatorLabel(atIndex: index) ?? "\(index + 1)"
+    func getIndicatorAccessibilityLabel(atIndex index: Int) -> String? {
+        return self.pageContent(atIndex: index).label
     }
 }

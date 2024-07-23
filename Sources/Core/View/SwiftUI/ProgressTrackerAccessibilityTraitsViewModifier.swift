@@ -23,6 +23,7 @@ struct ProgressTrackerAccessibilityTraitsViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         return content
             .accessibilityElement(children: .combine)
+            .accessibilityRemoveTraits([.isButton, .isStaticText])
             .accessibilityAddTraits(self.getAccessibilityTraits(index: self.index))
             .accessibilityIdentifier(AccessibilityIdentifier.indicator(forIndex: self.index))
             .accessibilityValue("\(self.index)")
@@ -34,6 +35,8 @@ struct ProgressTrackerAccessibilityTraitsViewModifier: ViewModifier {
 
         if self.viewModel.interactionState != .none {
             _ = accessibilityTraits.insert(.isButton)
+        } else {
+            _ = accessibilityTraits.insert(.isStaticText)
         }
         if index == self.viewModel.currentPageIndex {
             _ = accessibilityTraits.insert(.isSelected)

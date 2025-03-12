@@ -3,7 +3,7 @@
 //  SparkProgressTracker
 //
 //  Created by Michael Zimmermann on 21.03.24.
-//  Copyright © 2024 Adevinta. All rights reserved.
+//  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import SwiftUI

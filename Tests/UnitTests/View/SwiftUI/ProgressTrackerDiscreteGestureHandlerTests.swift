@@ -3,7 +3,7 @@
 //  SparkProgressTrackerUnitTests
 //
 //  Created by Michael Zimmermann on 27.03.24.
-//  Copyright © 2024 Adevinta. All rights reserved.
+//  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import SwiftUI

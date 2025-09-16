@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerIndicatorViewModelTests.swift
-//  SparkProgressTrackerSnapshotTests
+//  SparkComponentProgressTrackerSnapshotTests
 //
 //  Created by Michael Zimmermann on 25.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -8,8 +8,8 @@
 
 import Combine
 import XCTest
-@testable import SparkProgressTracker
-@_spi(SI_SPI) @testable import SparkProgressTrackerTesting
+@testable import SparkComponentProgressTracker
+@_spi(SI_SPI) @testable import SparkComponentProgressTrackerTesting
 @_spi(SI_SPI) import SparkThemingTesting
 
 final class ProgressTrackerIndicatorViewModelTests: XCTestCase {

@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerScenarioSnapshotTests.swift
-//  SparkProgressTrackerSnapshotTests
+//  SparkComponentProgressTrackerSnapshotTests
 //
 //  Created by Michael Zimmermann on 12.02.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 import UIKit
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 @_spi(SI_SPI) import SparkCommonSnapshotTesting
 
 enum ProgressTrackerContentType {

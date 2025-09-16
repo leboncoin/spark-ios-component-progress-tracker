@@ -1,13 +1,13 @@
 //
 //  ProgressTrackerGetOutlinedColorsUseCaseTests.swift
-//  SparkProgressTrackerSnapshotTests
+//  SparkComponentProgressTrackerSnapshotTests
 //
 //  Created by Michael Zimmermann on 18.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import XCTest
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 import SparkTheming
 @_spi(SI_SPI) import SparkThemingTesting
 
@@ -82,7 +82,7 @@ final class ProgressTrackerGetOutlinedColorsUseCaseTests: XCTestCase {
 // MARK: Private helpers
 private extension ProgressTrackerIntent {
 
-    func selectedColors(_ colors: Colors) -> ProgressTrackerColors {
+    func selectedColors(_ colors: any Colors) -> ProgressTrackerColors {
         switch self {
         case .accent:
             return .init(
@@ -132,7 +132,7 @@ private extension ProgressTrackerIntent {
         }
     }
 
-    func enabledColors(_ colors: Colors) -> ProgressTrackerColors {
+    func enabledColors(_ colors: any Colors) -> ProgressTrackerColors {
         switch self {
         case .accent:
             return .init(
@@ -182,7 +182,7 @@ private extension ProgressTrackerIntent {
         }
     }
 
-    func pressedColors(_ colors: Colors) -> ProgressTrackerColors {
+    func pressedColors(_ colors: any Colors) -> ProgressTrackerColors {
         switch self {
         case .accent:
             return .init(

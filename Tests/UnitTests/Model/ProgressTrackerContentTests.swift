@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerContentTests.swift
-//  SparkProgressTrackerUnitTests
+//  SparkComponentProgressTrackerUnitTests
 //
 //  Created by Michael Zimmermann on 25.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 
 final class ProgressTrackerContentTests: XCTestCase {
 

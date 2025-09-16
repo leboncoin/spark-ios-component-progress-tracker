@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerGetOutlinedColorsUseCase.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 11.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -12,7 +12,7 @@ import SparkTheming
 struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsUseCaseable {
 
     /// Return the colors of the progress tracker indicator
-    func execute(colors: Colors,
+    func execute(colors: any Colors,
                  intent: ProgressTrackerIntent,
                  state: ProgressTrackerState
     ) -> ProgressTrackerColors {
@@ -32,7 +32,7 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
             content: intentColors.content)
     }
 
-    private func pressedColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
+    private func pressedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
         switch intent {
         case .accent:
             return .init(
@@ -82,7 +82,7 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
         }
     }
 
-    private func selectedColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
+    private func selectedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
 
         switch intent {
         case .accent:
@@ -133,7 +133,7 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
         }
     }
 
-    private func enabledColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
+    private func enabledColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerColors {
         switch intent {
         case .accent:
             return .init(

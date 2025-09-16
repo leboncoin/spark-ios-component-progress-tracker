@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerIndicatorView.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 13.02.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -25,7 +25,7 @@ struct ProgressTrackerIndicatorView: View {
 
     // MARK: - Initialization
     init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,

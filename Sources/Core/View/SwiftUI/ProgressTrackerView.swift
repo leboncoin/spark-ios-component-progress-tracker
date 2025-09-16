@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerView.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 15.02.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -33,7 +33,7 @@ public struct ProgressTrackerView: View {
     ///  - orienation: The default is `horizontal`
     ///  - currentPageIndex: A binding representing the current page
     public init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
@@ -60,7 +60,7 @@ public struct ProgressTrackerView: View {
     ///  - orienation: The default is `horizontal`
     ///  - currentPageIndex: A binding representing the current page
     public init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
@@ -75,7 +75,7 @@ public struct ProgressTrackerView: View {
     }
 
     init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,

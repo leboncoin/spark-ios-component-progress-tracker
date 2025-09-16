@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerUIControlSnapshotTests.swift
-//  SparkProgressTrackerSnapshotTests
+//  SparkComponentProgressTrackerSnapshotTests
 //
 //  Created by Michael Zimmermann on 12.02.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -13,13 +13,13 @@ import SnapshotTesting
 import SparkTheming
 import SparkTheme
 
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 
 final class ProgressTrackerUIViewSnapshotTests: UIKitComponentSnapshotTestCase {
 
     // MARK: - Properties
 
-    private let theme: Theme = SparkTheme.shared
+    private let theme: any Theme = SparkTheme.shared
 
     // MARK: - Tests
 

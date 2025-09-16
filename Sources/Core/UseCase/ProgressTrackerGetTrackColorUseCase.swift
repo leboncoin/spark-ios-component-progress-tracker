@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerGetTrackColorUseCase.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 24.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -10,14 +10,14 @@ import SparkTheming
 
 // sourcery: AutoMockable
 protocol ProgressTrackerGetTrackColorUseCaseable {
-    func execute(colors: Colors,
+    func execute(colors: any Colors,
                  intent: ProgressTrackerIntent) -> any ColorToken
 }
 
 /// A use cate returning the color of the `track` between the progress tracker indicators.
 struct ProgressTrackerGetTrackColorUseCase: ProgressTrackerGetTrackColorUseCaseable {
 
-    func execute(colors: Colors,
+    func execute(colors: any Colors,
                  intent: ProgressTrackerIntent) -> any ColorToken {
         switch intent {
         case .basic: return colors.basic.basic

@@ -5,18 +5,18 @@ import PackageDescription
 
 // swiftlint:disable all
 let package = Package(
-    name: "SparkProgressTracker",
+    name: "SparkComponentProgressTracker",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "SparkProgressTracker",
-            targets: ["SparkProgressTracker"]
+            name: "SparkComponentProgressTracker",
+            targets: ["SparkComponentProgressTracker"]
         ),
         .library(
-            name: "SparkProgressTrackerTesting",
-            targets: ["SparkProgressTrackerTesting"]
+            name: "SparkComponentProgressTrackerTesting",
+            targets: ["SparkComponentProgressTrackerTesting"]
         )
     ],
     dependencies: [
@@ -33,7 +33,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SparkProgressTracker",
+            name: "SparkComponentProgressTracker",
             dependencies: [
                 .product(
                     name: "SparkCommon",
@@ -47,9 +47,9 @@ let package = Package(
             path: "Sources/Core"
         ),
         .target(
-            name: "SparkProgressTrackerTesting",
+            name: "SparkComponentProgressTrackerTesting",
             dependencies: [
-                "SparkProgressTracker",
+                "SparkComponentProgressTracker",
                 .product(
                     name: "SparkCommon",
                     package: "spark-ios-common"
@@ -70,10 +70,10 @@ let package = Package(
             path: "Sources/Testing"
         ),
         .testTarget(
-            name: "SparkProgressTrackerUnitTests",
+            name: "SparkComponentProgressTrackerUnitTests",
             dependencies: [
-                "SparkProgressTracker",
-                "SparkProgressTrackerTesting",
+                "SparkComponentProgressTracker",
+                "SparkComponentProgressTrackerTesting",
                 .product(
                     name: "SparkCommonTesting",
                     package: "spark-ios-common"
@@ -86,10 +86,10 @@ let package = Package(
             path: "Tests/UnitTests"
         ),
         .testTarget(
-            name: "SparkProgressTrackerSnapshotTests",
+            name: "SparkComponentProgressTrackerSnapshotTests",
             dependencies: [
-                "SparkProgressTracker",
-                "SparkProgressTrackerTesting",
+                "SparkComponentProgressTracker",
+                "SparkComponentProgressTrackerTesting",
                 .product(
                     name: "SparkCommonSnapshotTesting",
                     package: "spark-ios-common"

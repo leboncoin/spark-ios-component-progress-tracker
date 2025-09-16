@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerDiscreteUITouchHandlerTests.swift
-//  SparkProgressTrackerUnitTests
+//  SparkComponentProgressTrackerUnitTests
 //
 //  Created by Michael Zimmermann on 12.02.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Combine
 import XCTest
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 @_spi(SI_SPI) import SparkCommon
 
 final class ProgressTrackerDiscreteUITouchHandlerTests: XCTestCase {

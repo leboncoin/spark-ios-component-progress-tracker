@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerSpacing.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 24.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.

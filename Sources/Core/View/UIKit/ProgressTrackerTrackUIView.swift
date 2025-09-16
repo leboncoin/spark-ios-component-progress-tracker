@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerTrackUIView.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 30.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -30,7 +30,7 @@ final class ProgressTrackerTrackUIView: UIView {
         }
     }
 
-    var theme: Theme {
+    var theme: any Theme {
         get {
             return self.viewModel.theme
         }
@@ -68,7 +68,7 @@ final class ProgressTrackerTrackUIView: UIView {
     }
 
     // MARK: Initialization
-    init(theme: Theme,
+    init(theme: any Theme,
          intent: ProgressTrackerIntent,
          orientation: ProgressTrackerOrientation) {
         self.orientation = orientation

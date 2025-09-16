@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerTrackViewModel.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 30.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -12,7 +12,7 @@ import SparkTheming
 /// A view model for the Progress Tracker Track
 final class ProgressTrackerTrackViewModel: ObservableObject {
 
-    var theme: Theme {
+    var theme: any Theme {
         didSet {
             self.updateLineColor()
         }
@@ -32,15 +32,15 @@ final class ProgressTrackerTrackViewModel: ObservableObject {
         }
     }
 
-    private var useCase: ProgressTrackerGetTrackColorUseCaseable
+    private var useCase: any ProgressTrackerGetTrackColorUseCaseable
     @Published var lineColor: any ColorToken
     @Published var opacity: CGFloat = 1.0
 
     // MARK: - Initialization
-    init(theme: Theme,
+    init(theme: any Theme,
          intent: ProgressTrackerIntent,
          isEnabled: Bool = true,
-         useCase: ProgressTrackerGetTrackColorUseCaseable = ProgressTrackerGetTrackColorUseCase()
+         useCase: any ProgressTrackerGetTrackColorUseCaseable = ProgressTrackerGetTrackColorUseCase()
     ) {
         self.theme = theme
         self.intent = intent

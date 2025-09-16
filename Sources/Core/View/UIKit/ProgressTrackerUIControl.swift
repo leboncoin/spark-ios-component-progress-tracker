@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerUIControl.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 29.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -19,7 +19,7 @@ public final class ProgressTrackerUIControl: UIControl {
     typealias AccessibilityIdentifier = ProgressTrackerAccessibilityIdentifier
 
     /// The general theme
-    public var theme: Theme {
+    public var theme: any Theme {
         get {
             return self.viewModel.theme
         }
@@ -165,7 +165,7 @@ public final class ProgressTrackerUIControl: UIControl {
     ///  - labels: The labels under each indicator
     ///  - orienation: The default is `horizontal`
     public convenience init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize = .medium,
@@ -197,7 +197,7 @@ public final class ProgressTrackerUIControl: UIControl {
     ///  - numberOfPages: The number of track indicators (pages)
     ///  - orienation: The default is `horizontal`
     public convenience init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize = .medium,
@@ -218,7 +218,7 @@ public final class ProgressTrackerUIControl: UIControl {
 
     // MARK: - Internal init
     init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize = .medium,
@@ -736,7 +736,7 @@ public final class ProgressTrackerUIControl: UIControl {
         }
     }
 
-    private func didUpdate(theme: Theme) {
+    private func didUpdate(theme: any Theme) {
         for indicatorView in self.indicatorViews {
             indicatorView.theme = theme
         }

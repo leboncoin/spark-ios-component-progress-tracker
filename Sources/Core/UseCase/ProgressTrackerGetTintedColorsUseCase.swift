@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerGetTintedColorsUseCase.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 11.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -11,7 +11,7 @@ import SparkTheming
 /// A use case to calculate the tinted colors of the progress tracker
 struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUseCaseable {
 
-    func execute(colors: Colors,
+    func execute(colors: any Colors,
                  intent: ProgressTrackerIntent,
                  state: ProgressTrackerState
     ) -> ProgressTrackerColors {
@@ -32,7 +32,7 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
     }
 
     // MARK: - Private functions
-    private func pressedColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+    private func pressedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
         switch intent {
         case .accent:
             return .init(
@@ -73,7 +73,7 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
         }
     }
 
-    private func selectedColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+    private func selectedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
 
         switch intent {
         case .accent:
@@ -115,7 +115,7 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
         }
     }
 
-    private func enabledColors(colors: Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+    private func enabledColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
         switch intent {
         case .accent:
             return .init(

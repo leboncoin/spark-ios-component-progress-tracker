@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerContinuousGestureHandlerTests.swift
-//  SparkProgressTrackerUnitTests
+//  SparkComponentProgressTrackerUnitTests
 //
 //  Created by Michael Zimmermann on 27.03.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 import XCTest
 
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 
 final class ProgressTrackerContinuousGestureHandlerTests: XCTestCase {
 

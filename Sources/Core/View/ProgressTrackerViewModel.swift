@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerViewModel.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 24.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -13,7 +13,7 @@ import SparkTheming
 /// A view model for a Progress Tracker.
 final class ProgressTrackerViewModel<ComponentContent: ProgressTrackerContentIndicating>: ObservableObject where ComponentContent: Equatable {
 
-    var theme: Theme {
+    var theme: any Theme {
         didSet {
             self.themeDidUpdate()
         }
@@ -29,7 +29,7 @@ final class ProgressTrackerViewModel<ComponentContent: ProgressTrackerContentInd
         }
     }
 
-    private (set) var isEnabled: Bool = true {
+    private(set) var isEnabled: Bool = true {
         didSet {
             guard self.isEnabled != oldValue else { return }
             self.updateEnabledIndices()
@@ -67,20 +67,20 @@ final class ProgressTrackerViewModel<ComponentContent: ProgressTrackerContentInd
     @Published var disabledIndices = Set<Int>()
 
     @Published var spacings: ProgressTrackerSpacing
-    @Published var font: TypographyFontToken
+    @Published var font: any TypographyFontToken
     @Published var labelColor: any ColorToken
     @Published var interactionState: ProgressTrackerInteractionState = .none
 
     @Published var currentPressedIndicator: Int?
 
     // MARK: Private properties
-    private var spacingUseCase: ProgressTrackerGetSpacingsUseCaseable
+    private var spacingUseCase: any ProgressTrackerGetSpacingsUseCaseable
 
     // MARK: - Initialization
-    init(theme: Theme,
+    init(theme: any Theme,
          orientation: ProgressTrackerOrientation,
          content: ProgressTrackerContent<ComponentContent>,
-         spacingUseCase: ProgressTrackerGetSpacingsUseCaseable = ProgressTrackerGetSpacingsUseCase()
+         spacingUseCase: any ProgressTrackerGetSpacingsUseCaseable = ProgressTrackerGetSpacingsUseCase()
     ) {
         self.orientation = orientation
         self.theme = theme

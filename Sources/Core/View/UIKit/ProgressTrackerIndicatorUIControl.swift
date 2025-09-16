@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerIndicatorUIControl.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 26.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -17,7 +17,7 @@ final class ProgressTrackerIndicatorUIControl: UIControl {
 
     private let viewModel: ProgressTrackerIndicatorViewModel<ProgressTrackerUIIndicatorContent>
 
-    var theme: Theme {
+    var theme: any Theme {
         get {
             return self.viewModel.theme
         }
@@ -140,7 +140,7 @@ final class ProgressTrackerIndicatorUIControl: UIControl {
 
     // MARK: - Initialization
     convenience init(
-        theme: Theme,
+        theme: any Theme,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
@@ -233,7 +233,7 @@ final class ProgressTrackerIndicatorUIControl: UIControl {
         self.indicatorView.setBorderWidth(self.borderWidth)
     }
 
-    private func update(font: TypographyFontToken) {
+    private func update(font: any TypographyFontToken) {
         self.label.font = font.uiFont
     }
 

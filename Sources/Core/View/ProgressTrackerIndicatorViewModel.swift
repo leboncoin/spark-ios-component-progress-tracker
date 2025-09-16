@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerIndicatorViewModel.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 22.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -13,7 +13,7 @@ import SparkTheming
 /// A view model for a single Progress Tracker Indicator
 final class ProgressTrackerIndicatorViewModel<ComponentContent: ProgressTrackerContentIndicating>: ObservableObject {
 
-    var theme: Theme {
+    var theme: any Theme {
         didSet {
             self.updateColors()
             self.font = theme.typography.body2Highlight
@@ -43,23 +43,23 @@ final class ProgressTrackerIndicatorViewModel<ComponentContent: ProgressTrackerC
     }
 
     // MARK: - Private properties
-    private let colorsUseCase: ProgressTrackerGetColorsUseCaseable
+    private let colorsUseCase: any ProgressTrackerGetColorsUseCaseable
 
     // MARK: - Published properties
     @Published var size: ProgressTrackerSize
     @Published var content: ComponentContent
     @Published var colors: ProgressTrackerColors
-    @Published var font: TypographyFontToken
+    @Published var font: any TypographyFontToken
     @Published var opacity: CGFloat = 1.0
 
     // MARK: Initialization
-    init(theme: Theme,
+    init(theme: any Theme,
          intent: ProgressTrackerIntent,
          variant: ProgressTrackerVariant,
          size: ProgressTrackerSize,
          content: ComponentContent,
          state: ProgressTrackerState = .normal,
-         colorsUseCase: ProgressTrackerGetColorsUseCaseable = ProgressTrackerGetColorsUseCase()
+         colorsUseCase: any ProgressTrackerGetColorsUseCaseable = ProgressTrackerGetColorsUseCase()
     ) {
         self.theme = theme
         self.intent = intent

@@ -1,13 +1,13 @@
 //
 //  ProgressTrackerGetSpacingsUseCaseTests.swift
-//  SparkProgressTrackerUnitTests
+//  SparkComponentProgressTrackerUnitTests
 //
 //  Created by Michael Zimmermann on 24.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import XCTest
-@testable import SparkProgressTracker
+@testable import SparkComponentProgressTracker
 import SparkTheming
 @_spi(SI_SPI) import SparkThemingTesting
 
@@ -15,7 +15,7 @@ final class ProgressTrackerGetSpacingsUseCaseTests: XCTestCase {
 
     // MARK: Properties
     var sut: ProgressTrackerGetSpacingsUseCase!
-    var spacing: LayoutSpacing!
+    var spacing: (any LayoutSpacing)!
 
     // MARK: - Setup
     override func setUp() {

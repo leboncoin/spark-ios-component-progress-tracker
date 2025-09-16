@@ -1,6 +1,6 @@
 //
 //  ProgressTrackerGetColorsUseCase.swift
-//  SparkProgressTracker
+//  SparkComponentProgressTracker
 //
 //  Created by Michael Zimmermann on 11.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -10,7 +10,7 @@ import SparkTheming
 
 // sourcery: AutoMockable
 protocol ProgressTrackerGetColorsUseCaseable {
-    func execute(colors: Colors,
+    func execute(colors: any Colors,
                  intent: ProgressTrackerIntent,
                  variant: ProgressTrackerVariant,
                  state: ProgressTrackerState) -> ProgressTrackerColors
@@ -25,8 +25,8 @@ struct ProgressTrackerGetColorsUseCase: ProgressTrackerGetColorsUseCaseable {
 
     // MARK: - Initialization
     init(
-        getTintedColorsUseCase: some ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetTintedColorsUseCase(),
-        getOutlinedColorsUseCase: some ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetOutlinedColorsUseCase()) {
+        getTintedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetTintedColorsUseCase(),
+        getOutlinedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetOutlinedColorsUseCase()) {
         self.getTintedColorsUseCase = getTintedColorsUseCase
         self.getOutlinedColorsUseCase = getOutlinedColorsUseCase
     }
@@ -34,7 +34,7 @@ struct ProgressTrackerGetColorsUseCase: ProgressTrackerGetColorsUseCaseable {
     // MARK: Execute
     /// Returns the colors of the progress tracker indicator
     func execute(
-        colors: Colors,
+        colors: any Colors,
         intent: ProgressTrackerIntent,
         variant: ProgressTrackerVariant,
         state: ProgressTrackerState) -> ProgressTrackerColors {

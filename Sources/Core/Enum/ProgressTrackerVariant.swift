@@ -9,6 +9,7 @@
 import Foundation
 
 /// The progress tracker variant
+@available(*, deprecated, message: "There is not variant anymore.")
 public enum ProgressTrackerVariant: CaseIterable {
     case outlined
     case tinted

@@ -35,7 +35,6 @@ final class ProgressTrackerUIViewSnapshotTests: UIKitComponentSnapshotTestCase {
                     view = ProgressTrackerUIControl(
                         theme: self.theme,
                         intent: configuration.intent,
-                        variant: configuration.variant,
                         size: configuration.size,
                         numberOfPages: 5,
                         orientation: configuration.orientation
@@ -44,7 +43,6 @@ final class ProgressTrackerUIViewSnapshotTests: UIKitComponentSnapshotTestCase {
                     view = ProgressTrackerUIControl(
                         theme: self.theme,
                         intent: configuration.intent,
-                        variant: configuration.variant,
                         size: configuration.size,
                         labels: configuration.labels,
                         orientation: configuration.orientation

@@ -12,35 +12,83 @@ import SparkTheming
 protocol ProgressTrackerGetColorsUseCaseable {
     func execute(colors: any Colors,
                  intent: ProgressTrackerIntent,
-                 variant: ProgressTrackerVariant,
-                 state: ProgressTrackerState) -> ProgressTrackerColors
+                 state: ProgressTrackerState
+    ) -> ProgressTrackerColors
 }
 
 /// A use case that returns the color of the progress tracker indicator.
 struct ProgressTrackerGetColorsUseCase: ProgressTrackerGetColorsUseCaseable {
 
-    // MARK: - Properties
-    let getTintedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable
-    let getOutlinedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable
+    func execute(colors: any Colors,
+                 intent: ProgressTrackerIntent,
+                 state: ProgressTrackerState
+    ) -> ProgressTrackerColors {
+        let intentColors: ProgressTrackerTintedColors = {
+            if state.isSelected {
+                return self.selectedColors(colors: colors, intent: intent)
+            } else if state.isPressed {
+                return self.pressedColors(colors: colors, intent: intent)
+            } else {
+                return self.enabledColors(colors: colors, intent: intent)
+            }
+        }()
 
-    // MARK: - Initialization
-    init(
-        getTintedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetTintedColorsUseCase(),
-        getOutlinedColorsUseCase: any ProgressTrackerGetVariantColorsUseCaseable = ProgressTrackerGetOutlinedColorsUseCase()) {
-        self.getTintedColorsUseCase = getTintedColorsUseCase
-        self.getOutlinedColorsUseCase = getOutlinedColorsUseCase
+        return ProgressTrackerColors(
+            background: intentColors.background,
+            outline: intentColors.background,
+            content: intentColors.content)
     }
 
-    // MARK: Execute
-    /// Returns the colors of the progress tracker indicator
-    func execute(
-        colors: any Colors,
-        intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
-        state: ProgressTrackerState) -> ProgressTrackerColors {
-            switch variant {
-            case .outlined: return self.getOutlinedColorsUseCase.execute(colors: colors, intent: intent, state: state)
-            case .tinted: return self.getTintedColorsUseCase.execute(colors: colors, intent: intent, state: state)
-            }
+    // MARK: - Private functions
+
+    private func pressedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+        switch intent {
+        case .neutral:
+            return .init(
+                background: colors.states.neutralContainerPressed,
+                content: colors.feedback.onNeutralContainer)
+        case .success:
+            return .init(
+                background: colors.states.successContainerPressed,
+                content: colors.feedback.onSuccessContainer)
+        default:
+            return .init(
+                background: colors.states.basicContainerPressed,
+                content: colors.basic.onBasicContainer)
+        }
+    }
+
+    private func selectedColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+        switch intent {
+        case .neutral:
+            return .init(
+                background: colors.feedback.neutral,
+                content: colors.feedback.onNeutral)
+        case .success:
+            return .init(
+                background: colors.feedback.success,
+                content: colors.feedback.onSuccess)
+        default:
+            return .init(
+                background: colors.basic.basic,
+                content: colors.basic.onBasic)
+        }
+    }
+
+    private func enabledColors(colors: any Colors, intent: ProgressTrackerIntent) -> ProgressTrackerTintedColors {
+        switch intent {
+        case .neutral:
+            return .init(
+                background: colors.feedback.neutralContainer,
+                content: colors.feedback.onNeutralContainer)
+        case .success:
+            return .init(
+                background: colors.feedback.successContainer,
+                content: colors.feedback.onSuccessContainer)
+        default:
+            return .init(
+                background: colors.basic.basicContainer,
+                content: colors.basic.onBasicContainer)
+        }
     }
 }

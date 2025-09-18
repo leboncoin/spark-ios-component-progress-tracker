@@ -20,7 +20,7 @@ enum ProgressTrackerContentType {
 
 enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     case test1 // All intents
-    case test2 // All variants and states
+    case test2 // All states
     case test3 // Test content resilience
     case test4 // Test component sizes
     case test5 // Test all a11y sizes
@@ -57,7 +57,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - intents: all
-    ///  - variant: outlined
     ///  - state: enabled
     ///  - content: icon
     ///  - size: medium
@@ -72,7 +71,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: $0,
-                variant: .outlined,
                 state: .normal,
                 contentType: .icon,
                 size: .medium,
@@ -86,11 +84,10 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
 
     /// Test 2
     ///
-    /// Description: To test all variants & states
+    /// Description: To test all states
     ///
     /// Content:
     ///  - intents: basic
-    ///  - variant: all
     ///  - state: all // except selected, since this will also be tested with normal
     ///  - content: icon
     ///  - size: medium
@@ -99,21 +96,13 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///  - mode: light
     ///  - a11y size: medium
     private func test2(isSwiftUIComponent: Bool) -> [ProgressTrackerConfigurationSnapshotTests] {
-        let variants = ProgressTrackerVariant.allCases
         let states: [ProgressTrackerState] = [.normal, .pressed, .disabled]
 
-        let allCases: [(variant: ProgressTrackerVariant, state: ProgressTrackerState)] = variants.flatMap{ variant in
-            return states.map{ state in
-                return (variant, state)
-            }
-        }
-
-        return allCases.map {
+        return states.map {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: $0.variant,
-                state: $0.state,
+                state: $0,
                 contentType: .icon,
                 size: .medium,
                 orientation: .horizontal,
@@ -130,7 +119,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - intents: basic
-    ///  - variant: outlined
     ///  - state: enabled
     ///  - content: char/none
     ///  - size: medium
@@ -146,7 +134,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: $0,
                 size: .medium,
@@ -164,7 +151,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - intents: basic
-    ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
     ///  - size: all
@@ -178,7 +164,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: .text,
                 size: $0,
@@ -196,7 +181,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - intents: basic
-    ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
     ///  - size: medium
@@ -210,7 +194,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: .text,
                 size: .medium,
@@ -228,7 +211,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - intents: basic
-    ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
     ///  - size: medium
@@ -249,7 +231,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: .text,
                 size: .medium,
@@ -261,7 +242,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: .text,
                 size: .medium,
@@ -274,7 +254,6 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             .init(
                 scenario: self,
                 intent: .basic,
-                variant: .outlined,
                 state: .normal,
                 contentType: .text,
                 size: .medium,

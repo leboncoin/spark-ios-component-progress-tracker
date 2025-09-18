@@ -27,13 +27,6 @@ final class ProgressTrackerIndicatorViewModel<ComponentContent: ProgressTrackerC
         }
     }
 
-    var variant: ProgressTrackerVariant {
-        didSet {
-            guard self.variant != oldValue else { return }
-            self.updateColors()
-        }
-    }
-
     var state: ProgressTrackerState {
         didSet {
             guard self.state != oldValue else { return }
@@ -55,7 +48,6 @@ final class ProgressTrackerIndicatorViewModel<ComponentContent: ProgressTrackerC
     // MARK: Initialization
     init(theme: any Theme,
          intent: ProgressTrackerIntent,
-         variant: ProgressTrackerVariant,
          size: ProgressTrackerSize,
          content: ComponentContent,
          state: ProgressTrackerState = .normal,
@@ -63,20 +55,19 @@ final class ProgressTrackerIndicatorViewModel<ComponentContent: ProgressTrackerC
     ) {
         self.theme = theme
         self.intent = intent
-        self.variant = variant
         self.size = size
         self.content = content
         self.colorsUseCase = colorsUseCase
         self.state = state
 
-        self.colors = colorsUseCase.execute(colors: theme.colors, intent: intent, variant: variant, state: state)
+        self.colors = colorsUseCase.execute(colors: theme.colors, intent: intent, state: state)
 
         self.font = theme.typography.body2Highlight
         self.updateOpacity()
     }
 
     private func updateColors() {
-        self.colors = self.colorsUseCase.execute(colors: theme.colors, intent: intent, variant: variant, state: self.state)
+        self.colors = self.colorsUseCase.execute(colors: theme.colors, intent: intent, state: self.state)
     }
 
     private func updateOpacity() {

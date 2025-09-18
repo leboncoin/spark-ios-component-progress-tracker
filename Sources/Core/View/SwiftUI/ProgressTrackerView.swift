@@ -17,7 +17,6 @@ public struct ProgressTrackerView: View {
     // MARK: - Private properties
     @ObservedObject private var viewModel: ProgressTrackerViewModel<ProgressTrackerIndicatorContent>
     private let intent: ProgressTrackerIntent
-    private let variant: ProgressTrackerVariant
     private let size: ProgressTrackerSize
     @Binding var currentPageIndex: Int
     @Environment(\.isEnabled) private var isEnabled: Bool
@@ -32,6 +31,7 @@ public struct ProgressTrackerView: View {
     ///  - labels: The labels under each indicator
     ///  - orienation: The default is `horizontal`
     ///  - currentPageIndex: A binding representing the current page
+    @available(*, deprecated, message: "Use the init without variant.")
     public init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
@@ -47,7 +47,32 @@ public struct ProgressTrackerView: View {
             content.setAttributedLabel(AttributedString(stringLiteral: label), atIndex: index)
         }
 
-        self.init(theme: theme, intent: intent, variant: variant, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
+        self.init(theme: theme, intent: intent, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
+    }
+
+    /// Initializer
+    /// - Parameters:
+    ///  - theme: the general theme
+    ///  - intent: The intent defining the colors
+    ///  - size: The default is `medium`
+    ///  - labels: The labels under each indicator
+    ///  - orienation: The default is `horizontal`
+    ///  - currentPageIndex: A binding representing the current page
+    public init(
+        theme: any Theme,
+        intent: ProgressTrackerIntent,
+        size: ProgressTrackerSize,
+        labels: [String],
+        orientation: ProgressTrackerOrientation = .horizontal,
+        currentPageIndex: Binding<Int>
+    ) {
+        var content = Content(numberOfPages: labels.count)
+        content.currentPageIndex = currentPageIndex.wrappedValue
+        for (index, label) in labels.enumerated() {
+            content.setAttributedLabel(AttributedString(stringLiteral: label), atIndex: index)
+        }
+
+        self.init(theme: theme, intent: intent, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
     }
 
     /// Initializer
@@ -59,6 +84,7 @@ public struct ProgressTrackerView: View {
     ///  - numberOfPages: The number of track indicators (pages)
     ///  - orienation: The default is `horizontal`
     ///  - currentPageIndex: A binding representing the current page
+    @available(*, deprecated, message: "Use the init without variant.")
     public init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
@@ -71,13 +97,34 @@ public struct ProgressTrackerView: View {
         var content = Content(numberOfPages: numberOfPages)
         content.currentPageIndex = currentPageIndex.wrappedValue
 
-        self.init(theme: theme, intent: intent, variant: variant, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
+        self.init(theme: theme, intent: intent, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
+    }
+
+    /// Initializer
+    /// - Parameters:
+    ///  - theme: the general theme
+    ///  - intent: The intent defining the colors
+    ///  - size: The default is `medium`
+    ///  - numberOfPages: The number of track indicators (pages)
+    ///  - orienation: The default is `horizontal`
+    ///  - currentPageIndex: A binding representing the current page
+    public init(
+        theme: any Theme,
+        intent: ProgressTrackerIntent,
+        size: ProgressTrackerSize,
+        numberOfPages: Int,
+        orientation: ProgressTrackerOrientation = .horizontal,
+        currentPageIndex: Binding<Int>
+    ) {
+        var content = Content(numberOfPages: numberOfPages)
+        content.currentPageIndex = currentPageIndex.wrappedValue
+
+        self.init(theme: theme, intent: intent, size: size, orientation: orientation, currentPageIndex: currentPageIndex, content: content)
     }
 
     init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
         orientation: ProgressTrackerOrientation = .horizontal,
         currentPageIndex: Binding<Int>,
@@ -89,7 +136,6 @@ public struct ProgressTrackerView: View {
             content: content)
 
         self.viewModel = viewModel
-        self.variant = variant
         self.size = size
         self.intent = intent
         self._currentPageIndex = currentPageIndex
@@ -132,9 +178,9 @@ public struct ProgressTrackerView: View {
     private var progressTrackerView: some View {
         let viewModel = self.viewModel.setIsEnabled(self.isEnabled)
         if viewModel.orientation == .horizontal {
-            ProgressTrackerHorizontalView(intent: self.intent, variant: self.variant, size: self.size, currentPageIndex: self.$currentPageIndex, viewModel: viewModel)
+            ProgressTrackerHorizontalView(intent: self.intent, size: self.size, currentPageIndex: self.$currentPageIndex, viewModel: viewModel)
         } else {
-            ProgressTrackerVerticalView(intent: self.intent, variant: self.variant, size: self.size, currentPageIndex: self.$currentPageIndex, viewModel: viewModel)
+            ProgressTrackerVerticalView(intent: self.intent, size: self.size, currentPageIndex: self.$currentPageIndex, viewModel: viewModel)
         }
     }
 

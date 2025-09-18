@@ -16,7 +16,6 @@ struct ProgressTrackerHorizontalView: View {
 
     @ObservedObject private var viewModel: ProgressTrackerViewModel<ProgressTrackerIndicatorContent>
     private let intent: ProgressTrackerIntent
-    private let variant: ProgressTrackerVariant
     private let size: ProgressTrackerSize
     @ScaledMetric private var scaleFactor = 1.0
     @Binding var currentPageIndex: Int
@@ -36,13 +35,11 @@ struct ProgressTrackerHorizontalView: View {
     // MARK: - Initialization
     init(
         intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
         currentPageIndex: Binding<Int>,
         viewModel: ProgressTrackerViewModel<ProgressTrackerIndicatorContent>
     ) {
         self.viewModel = viewModel
-        self.variant = variant
         self.size = size
         self.intent = intent
         self._currentPageIndex = currentPageIndex
@@ -133,7 +130,6 @@ struct ProgressTrackerHorizontalView: View {
         ProgressTrackerIndicatorView(
             theme: self.viewModel.theme,
             intent: self.intent,
-            variant: self.variant,
             size: self.size,
             content: self.viewModel.content.pageContent(atIndex: index))
         .selected(self.viewModel.isSelected(at: index))

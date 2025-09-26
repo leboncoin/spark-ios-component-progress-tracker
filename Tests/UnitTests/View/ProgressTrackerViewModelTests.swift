@@ -57,7 +57,7 @@ final class ProgressTrackerViewModelTests: XCTestCase {
     func test_theme_changed() {
         // GIVEN
         let sut = self.sut(orientation: .horizontal)
-        let expectation = expectation(description: "Wait for spacing & font change")
+        let expectation = expectation(description: "Wait for spacing & fonts change")
         expectation.expectedFulfillmentCount = 2
 
         Publishers.Zip(sut.$spacings, sut.$font)

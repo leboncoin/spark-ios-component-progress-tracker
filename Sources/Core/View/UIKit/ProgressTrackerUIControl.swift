@@ -48,10 +48,10 @@ public final class ProgressTrackerUIControl: UIControl {
     }
 
     /// The coloring variant, tinted or outlined.
+    @available(*, deprecated, message: "There is not variant anymore. Set has no effect.")
     public var variant: ProgressTrackerVariant {
-        didSet {
-            self.didUpdate(variant: self.variant)
-        }
+        get { .tinted }
+        set { }
     }
 
     /// The size of the indicator. Small indicator show now content.
@@ -164,6 +164,7 @@ public final class ProgressTrackerUIControl: UIControl {
     ///  - size: The default is `medium`
     ///  - labels: The labels under each indicator
     ///  - orienation: The default is `horizontal`
+    @available(*, deprecated, message: "Use the init without variant.")
     public convenience init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
@@ -180,14 +181,40 @@ public final class ProgressTrackerUIControl: UIControl {
         self.init(
             theme: theme,
             intent: intent,
-            variant: variant,
+            size: size,
+            content: content,
+            orientation: orientation
+        )
+    }
+    /// Initializer
+    /// - Parameters:
+    ///  - theme: the general theme
+    ///  - intent: The intent defining the colors
+    ///  - variant: Tinted or outlined
+    ///  - size: The default is `medium`
+    ///  - labels: The labels under each indicator
+    ///  - orienation: The default is `horizontal`
+    public convenience init(
+        theme: any Theme,
+        intent: ProgressTrackerIntent,
+        size: ProgressTrackerSize = .medium,
+        labels: [String],
+        orientation: ProgressTrackerOrientation = .horizontal
+    ) {
+        var content = Content(numberOfPages: labels.count, currentPageIndex: 0)
+        for (index, label) in labels.enumerated() {
+            content.setAttributedLabel(NSAttributedString(string: label), atIndex: index)
+        }
+
+        self.init(
+            theme: theme,
+            intent: intent,
             size: size,
             content: content,
             orientation: orientation
         )
     }
 
-    // MARK: Initialization
     /// Initializer
     /// - Parameters:
     ///  - theme: the general theme
@@ -196,6 +223,7 @@ public final class ProgressTrackerUIControl: UIControl {
     ///  - size: The default is `medium`
     ///  - numberOfPages: The number of track indicators (pages)
     ///  - orienation: The default is `horizontal`
+    @available(*, deprecated, message: "Use the init without variant.")
     public convenience init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
@@ -209,7 +237,31 @@ public final class ProgressTrackerUIControl: UIControl {
         self.init(
             theme: theme,
             intent: intent,
-            variant: variant,
+            size: size,
+            content: content,
+            orientation: orientation
+        )
+    }
+
+    /// Initializer
+    /// - Parameters:
+    ///  - theme: the general theme
+    ///  - intent: The intent defining the colors
+    ///  - size: The default is `medium`
+    ///  - numberOfPages: The number of track indicators (pages)
+    ///  - orienation: The default is `horizontal`
+    public convenience init(
+        theme: any Theme,
+        intent: ProgressTrackerIntent,
+        size: ProgressTrackerSize = .medium,
+        numberOfPages: Int,
+        orientation: ProgressTrackerOrientation = .horizontal
+    ) {
+        let content = Content(numberOfPages: numberOfPages, currentPageIndex: 0)
+
+        self.init(
+            theme: theme,
+            intent: intent,
             size: size,
             content: content,
             orientation: orientation
@@ -217,10 +269,10 @@ public final class ProgressTrackerUIControl: UIControl {
     }
 
     // MARK: - Internal init
+
     init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
         size: ProgressTrackerSize = .medium,
         content: Content,
         orientation: ProgressTrackerOrientation = .horizontal
@@ -232,7 +284,6 @@ public final class ProgressTrackerUIControl: UIControl {
             content: content)
 
         self.viewModel = viewModel
-        self.variant = variant
         self.size = size
         self.intent = intent
 
@@ -329,7 +380,6 @@ public final class ProgressTrackerUIControl: UIControl {
             let indicator = ProgressTrackerIndicatorUIControl(
                 theme: self.theme,
                 intent: self.intent,
-                variant: self.variant,
                 size: self.size,
                 content: content.pageContent(atIndex: index))
             indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -358,7 +408,6 @@ public final class ProgressTrackerUIControl: UIControl {
             label.allowsDefaultTighteningForTruncation = true
             label.isUserInteractionEnabled = false
             label.isAccessibilityElement = true
-
             return label
         }
     }
@@ -742,12 +791,6 @@ public final class ProgressTrackerUIControl: UIControl {
         }
         for trackView in self.trackViews {
             trackView.theme = theme
-        }
-    }
-
-    private func didUpdate(variant: ProgressTrackerVariant) {
-        for indicatorView in self.indicatorViews {
-            indicatorView.variant = variant
         }
     }
 

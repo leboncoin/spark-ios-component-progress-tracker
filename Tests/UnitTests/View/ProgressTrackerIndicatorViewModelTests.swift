@@ -25,7 +25,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
         self.colorsUseCase = ProgressTrackerGetColorsUseCaseableGeneratedMock()
 
         self.colorsUseCase
-            .executeWithColorsAndIntentAndVariantAndStateReturnValue = .init(
+            .executeWithColorsAndIntentAndStateReturnValue = .init(
                 background: self.theme.colors.basic.basicContainer,
                 outline: self.theme.colors.basic.onBasic,
                 content: self.theme.colors.basic.basic
@@ -35,16 +35,15 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
     // MARK: - Tests
     func test_initialization() {
         // Given
-        let sut = self.sut(intent: .alert, variant: .tinted, size: .small, state: .selected)
+        let sut = self.sut(intent: .neutral, size: .small, state: .selected)
 
         // Then
         XCTAssertEqual(sut.state, .selected, "Expected state to be selected")
-        XCTAssertEqual(sut.intent, .alert, "Expected intent to be alert")
-        XCTAssertEqual(sut.variant, .tinted, "Expected variant to be tinted")
+        XCTAssertEqual(sut.intent, .neutral, "Expected intent to be alert")
         XCTAssertEqual(sut.size, .small, "Expected size to be small")
         XCTAssertIdentical(sut.theme as? ThemeGeneratedMock, self.theme, "Expected theme to be identical")
 
-        XCTAssertEqual(self.colorsUseCase.executeWithColorsAndIntentAndVariantAndStateCallsCount, 1)
+        XCTAssertEqual(self.colorsUseCase.executeWithColorsAndIntentAndStateCallsCount, 1)
     }
 
     func test_update_theme() {
@@ -77,7 +76,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
         .store(in: &self.cancellables)
 
         // When
-        sut.intent = .danger
+        sut.intent = .success
 
         // Then
         wait(for: [expectation])
@@ -96,42 +95,6 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
 
         // When
         sut.intent = .basic
-
-        // Then
-        wait(for: [expectation])
-    }
-
-    func test_variant_change() {
-        // Given
-        let sut = self.sut(variant: .outlined)
-        let expectation = expectation(description: "Expect colors to have been triggered twice")
-        expectation.expectedFulfillmentCount = 2
-
-        sut.$colors.sink { _ in
-            expectation.fulfill()
-        }
-        .store(in: &self.cancellables)
-
-        // When
-        sut.variant = .tinted
-
-        // Then
-        wait(for: [expectation])
-    }
-
-    func test_variant_no_change() {
-        // Given
-        let sut = self.sut(variant: .outlined)
-        let expectation = expectation(description: "Expect colors to have been triggered once")
-        expectation.expectedFulfillmentCount = 1
-
-        sut.$colors.sink { _ in
-            expectation.fulfill()
-        }
-        .store(in: &self.cancellables)
-
-        // When
-        sut.variant = .outlined
 
         // Then
         wait(for: [expectation])
@@ -230,13 +193,11 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
     // MARK: Private functions
     private func sut(
         intent: ProgressTrackerIntent = .basic,
-        variant: ProgressTrackerVariant = .outlined,
         size: ProgressTrackerSize = .large,
         state: ProgressTrackerState = .normal) -> ProgressTrackerIndicatorViewModel<ProgressTrackerUIIndicatorContent> {
             return .init(
                 theme: self.theme,
                 intent: intent,
-                variant: variant,
                 size: size,
                 content: ProgressTrackerUIIndicatorContent(),
                 state: state,

@@ -17,7 +17,6 @@ struct ProgressTrackerConfigurationSnapshotTests {
     let scenario: ProgressTrackerScenarioSnapshotTests
 
     let intent: ProgressTrackerIntent
-    let variant: ProgressTrackerVariant
     let state: ProgressTrackerState
     let contentType: ProgressTrackerContentType
     let size: ProgressTrackerSize
@@ -31,7 +30,6 @@ struct ProgressTrackerConfigurationSnapshotTests {
 
     init(scenario: ProgressTrackerScenarioSnapshotTests,
          intent: ProgressTrackerIntent,
-         variant: ProgressTrackerVariant,
          state: ProgressTrackerState,
          contentType: ProgressTrackerContentType,
          size: ProgressTrackerSize,
@@ -42,7 +40,6 @@ struct ProgressTrackerConfigurationSnapshotTests {
          frame: CGRect? = nil) {
         self.scenario = scenario
         self.intent = intent
-        self.variant = variant
         self.state = state
         self.contentType = contentType
         self.size = size
@@ -58,7 +55,6 @@ struct ProgressTrackerConfigurationSnapshotTests {
         return [
             "\(self.scenario.rawValue)",
             "\(self.intent)",
-            "\(self.variant)",
             "\(self.state)",
             "\(self.contentType)",
             "\(self.size)",

@@ -27,14 +27,12 @@ struct ProgressTrackerIndicatorView: View {
     init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
         content: ProgressTrackerIndicatorContent) {
             let viewModel = ProgressTrackerIndicatorViewModel<ProgressTrackerIndicatorContent>(
 
                 theme: theme,
                 intent: intent,
-                variant: variant,
                 size: size,
                 content: content,
                 state: .normal

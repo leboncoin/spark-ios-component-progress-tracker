@@ -57,14 +57,14 @@ final class ProgressTrackerTrackViewModelTests: XCTestCase {
         let sut = self.sut(intent: .basic)
 
         // WHEN
-        sut.intent = .main
+        sut.intent = .success
 
         // THEN
         XCTAssertEqual(self.useCase.executeWithColorsAndIntentCallsCount, 2, "Expected use case to have been called twice")
 
         let arguments = self.useCase.executeWithColorsAndIntentReceivedArguments
 
-        XCTAssertEqual(arguments?.intent, .main, "Expected argument of use case to be main")
+        XCTAssertEqual(arguments?.intent, .success, "Expected argument of use case to be main")
     }
 
     func test_is_enabled_updates_opacity_updates() {

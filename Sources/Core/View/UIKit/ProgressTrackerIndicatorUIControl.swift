@@ -53,15 +53,6 @@ final class ProgressTrackerIndicatorUIControl: UIControl {
         }
     }
 
-    var variant: ProgressTrackerVariant {
-        get {
-            return self.viewModel.variant
-        }
-        set {
-            self.viewModel.variant = newValue
-        }
-    }
-
     private lazy var indicatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -142,14 +133,12 @@ final class ProgressTrackerIndicatorUIControl: UIControl {
     convenience init(
         theme: any Theme,
         intent: ProgressTrackerIntent,
-        variant: ProgressTrackerVariant,
         size: ProgressTrackerSize,
         content: ProgressTrackerUIIndicatorContent) {
             let viewModel = ProgressTrackerIndicatorViewModel<ProgressTrackerUIIndicatorContent>(
 
                 theme: theme,
                 intent: intent,
-                variant: variant,
                 size: size,
                 content: content,
                 state: .normal

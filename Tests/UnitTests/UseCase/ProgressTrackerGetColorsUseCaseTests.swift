@@ -47,7 +47,7 @@ final class ProgressTrackerGetColorsUseCaseTests: XCTestCase {
         // WHEN
         let tabColors = self.sut.execute(
             colors: colors,
-            intent: .basic,
+            intent: .support,
             variant: .tinted,
             state: .normal)
 
@@ -68,7 +68,7 @@ final class ProgressTrackerGetColorsUseCaseTests: XCTestCase {
         // WHEN
         let tabColors = self.sut.execute(
             colors: colors,
-            intent: .basic,
+            intent: .support,
             variant: .outlined,
             state: .normal)
 

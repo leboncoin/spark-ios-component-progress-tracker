@@ -94,10 +94,6 @@ private extension ProgressTrackerIntent {
                 return .init(
                     background: colors.feedback.alert,
                     content: colors.feedback.onAlert)
-            case .basic:
-                return .init(
-                    background: colors.basic.basic,
-                    content: colors.basic.onBasic)
             case .danger:
                 return .init(
                     background: colors.feedback.error,
@@ -142,10 +138,6 @@ private extension ProgressTrackerIntent {
                 return .init(
                     background: colors.feedback.alertContainer,
                     content: colors.feedback.onAlertContainer)
-            case .basic:
-                return .init(
-                    background: colors.basic.basicContainer,
-                    content: colors.basic.onBasicContainer)
             case .danger:
                 return .init(
                     background: colors.feedback.errorContainer,
@@ -190,10 +182,6 @@ private extension ProgressTrackerIntent {
                 return .init(
                     background: colors.states.alertContainerPressed,
                     content: colors.feedback.onAlertContainer)
-            case .basic:
-                return .init(
-                    background: colors.states.basicContainerPressed,
-                    content: colors.basic.onBasicContainer)
             case .danger:
                 return .init(
                     background: colors.states.errorContainerPressed,

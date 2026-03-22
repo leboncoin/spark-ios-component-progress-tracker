@@ -67,7 +67,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
 
     func test_intent_change() {
         // Given
-        let sut = self.sut(intent: .basic)
+        let sut = self.sut(intent: .support)
         let expectation = expectation(description: "Expect colors to have been triggered twice")
         expectation.expectedFulfillmentCount = 2
 
@@ -85,7 +85,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
 
     func test_intent_no_change() {
         // Given
-        let sut = self.sut(intent: .basic)
+        let sut = self.sut(intent: .support)
         let expectation = expectation(description: "Expect colors to have been triggered once")
         expectation.expectedFulfillmentCount = 1
 
@@ -95,7 +95,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
         .store(in: &self.cancellables)
 
         // When
-        sut.intent = .basic
+        sut.intent = .support
 
         // Then
         wait(for: [expectation])
@@ -229,7 +229,7 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
 
     // MARK: Private functions
     private func sut(
-        intent: ProgressTrackerIntent = .basic,
+        intent: ProgressTrackerIntent = .support,
         variant: ProgressTrackerVariant = .outlined,
         size: ProgressTrackerSize = .large,
         state: ProgressTrackerState = .normal) -> ProgressTrackerIndicatorViewModel<ProgressTrackerUIIndicatorContent> {

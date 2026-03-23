@@ -54,7 +54,7 @@ final class ProgressTrackerTrackViewModelTests: XCTestCase {
 
     func test_intent_updates_line_color_updates() {
         // GIVEN
-        let sut = self.sut(intent: .basic)
+        let sut = self.sut(intent: .support)
 
         // WHEN
         sut.intent = .main
@@ -91,17 +91,17 @@ final class ProgressTrackerTrackViewModelTests: XCTestCase {
 
     func test_intent_the_same_no_color_updates() {
         // GIVEN
-        let sut = self.sut(intent: .basic)
+        let sut = self.sut(intent: .support)
 
         // WHEN
-        sut.intent = .basic
+        sut.intent = .support
 
         // THEN
         XCTAssertEqual(self.useCase.executeWithColorsAndIntentCallsCount, 1, "Expected use case to only have been called once")
 
         let arguments = self.useCase.executeWithColorsAndIntentReceivedArguments
 
-        XCTAssertEqual(arguments?.intent, .basic, "Expected argument of use case to be basic")
+        XCTAssertEqual(arguments?.intent, .support, "Expected argument of use case to be support")
     }
 
     func test_is_enabled_not_updated_no_line_color_updates() {
@@ -147,7 +147,7 @@ final class ProgressTrackerTrackViewModelTests: XCTestCase {
     }
 
     private func sut(
-        intent: ProgressTrackerIntent = .basic,
+        intent: ProgressTrackerIntent = .support,
         isEnabled: Bool = true) -> ProgressTrackerTrackViewModel {
         return .init(
             theme: self.theme,

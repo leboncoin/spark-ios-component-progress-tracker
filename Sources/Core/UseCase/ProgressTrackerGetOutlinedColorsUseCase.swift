@@ -44,11 +44,6 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
                 background: colors.states.alertContainerPressed,
                 outline: colors.feedback.alert,
                 content: colors.feedback.onAlertContainer)
-        case .basic:
-            return .init(
-                background: colors.states.basicContainerPressed,
-                outline: colors.basic.basic,
-                content: colors.basic.onBasicContainer)
         case .danger:
             return .init(
                 background: colors.states.errorContainerPressed,
@@ -95,11 +90,6 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
                 background: colors.feedback.alertContainer,
                 outline: colors.feedback.alert,
                 content: colors.feedback.onAlertContainer)
-        case .basic:
-            return .init(
-                background: colors.basic.basicContainer,
-                outline: colors.basic.basic,
-                content: colors.basic.onBasicContainer)
         case .danger:
             return .init(
                 background: colors.feedback.errorContainer,
@@ -145,11 +135,6 @@ struct ProgressTrackerGetOutlinedColorsUseCase: ProgressTrackerGetVariantColorsU
                 background: ColorTokenDefault.clear,
                 outline: colors.feedback.alert,
                 content: colors.feedback.onAlertContainer)
-        case .basic:
-            return .init(
-                background: ColorTokenDefault.clear,
-                outline: colors.basic.basic,
-                content: colors.basic.onBasicContainer)
         case .danger:
             return .init(
                 background: ColorTokenDefault.clear,

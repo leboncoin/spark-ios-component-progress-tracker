@@ -42,10 +42,6 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
             return .init(
                 background: colors.states.alertContainerPressed,
                 content: colors.feedback.onAlertContainer)
-        case .basic:
-            return .init(
-                background: colors.states.basicContainerPressed,
-                content: colors.basic.onBasicContainer)
         case .danger:
             return .init(
                 background: colors.states.errorContainerPressed,
@@ -84,10 +80,6 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
             return .init(
                 background: colors.feedback.alert,
                 content: colors.feedback.onAlert)
-        case .basic:
-            return .init(
-                background: colors.basic.basic,
-                content: colors.basic.onBasic)
         case .danger:
             return .init(
                 background: colors.feedback.error,
@@ -125,10 +117,6 @@ struct ProgressTrackerGetTintedColorsUseCase: ProgressTrackerGetVariantColorsUse
             return .init(
                 background: colors.feedback.alertContainer,
                 content: colors.feedback.onAlertContainer)
-        case .basic:
-            return .init(
-                background: colors.basic.basicContainer,
-                content: colors.basic.onBasicContainer)
         case .danger:
             return .init(
                 background: colors.feedback.errorContainer,

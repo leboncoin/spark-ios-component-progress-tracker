@@ -41,7 +41,8 @@ private extension ProgressTrackerIntent {
         switch self {
         case .neutral: mock.feedback.neutral
         case .success: mock.feedback.success
-        default: mock.basic.basic
+        case .support: mock.support.support
+        default: mock.support.support
         }
     }
 }

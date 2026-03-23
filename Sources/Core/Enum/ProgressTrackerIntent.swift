@@ -10,28 +10,26 @@ import Foundation
 
 /// All possible intents of the progress tracker
 public enum ProgressTrackerIntent: CaseIterable {
-    case basic
     case neutral
     case success
-
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
-    case accent
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
-    case alert
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
-    case danger
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
-    case info
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
-    case main
-    @available(*, deprecated, message: "Use basic, neutral or success instead.")
     case support
+
+    @available(*, deprecated, message: "Use neutral, success or support instead.")
+    case accent
+    @available(*, deprecated, message: "Use neutral, success or support instead.")
+    case alert
+    @available(*, deprecated, message: "Use neutral, success or support instead.")
+    case danger
+    @available(*, deprecated, message: "Use neutral, success or support instead.")
+    case info
+    @available(*, deprecated, message: "Use neutral, success or support instead.")
+    case main
 
     // MARK: - Properties
 
     static public var allCases: [Self] = [
-        .basic,
         .neutral,
-        .success
+        .success,
+        .support
     ]
 }

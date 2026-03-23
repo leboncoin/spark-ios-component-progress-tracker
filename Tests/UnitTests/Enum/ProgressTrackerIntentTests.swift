@@ -18,6 +18,6 @@ final class ProgressTrackerIntentTests: XCTestCase {
         let sut = ProgressTrackerIntent.allCases
 
         // THEN
-        XCTAssertEqual(sut, [.basic, .neutral, .success])
+        XCTAssertEqual(sut, [.neutral, .success, .support])
     }
 }

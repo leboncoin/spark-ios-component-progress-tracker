@@ -22,7 +22,8 @@ struct ProgressTrackerGetTrackColorUseCase: ProgressTrackerGetTrackColorUseCasea
         switch intent {
         case .neutral: return colors.feedback.neutral
         case .success: return colors.feedback.success
-        default: return colors.basic.basic
+        case .support: return colors.support.support
+        default: return colors.support.support
         }
     }
 }

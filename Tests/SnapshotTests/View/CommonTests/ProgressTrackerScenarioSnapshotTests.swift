@@ -89,7 +89,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     /// Description: To test all variants & states
     ///
     /// Content:
-    ///  - intents: basic
+    ///  - intents: support
     ///  - variant: all
     ///  - state: all // except selected, since this will also be tested with normal
     ///  - content: icon
@@ -111,7 +111,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
         return allCases.map {
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: $0.variant,
                 state: $0.state,
                 contentType: .icon,
@@ -129,7 +129,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     /// Description: To test content resilience
     ///
     /// Content:
-    ///  - intents: basic
+    ///  - intents: support
     ///  - variant: outlined
     ///  - state: enabled
     ///  - content: char/none
@@ -145,7 +145,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
         return allContents.map {
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: $0,
@@ -163,7 +163,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     /// Description: To test component sizes
     ///
     /// Content:
-    ///  - intents: basic
+    ///  - intents: support
     ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
@@ -177,7 +177,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
         return ProgressTrackerSize.allCases.map {
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: .text,
@@ -195,7 +195,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     /// Description: To test all a11y sizes
     ///
     /// Content:
-    ///  - intents: basic
+    ///  - intents: support
     ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
@@ -209,7 +209,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
         return [
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: .text,
@@ -227,7 +227,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
     /// Description: test orientations with different labels sizes
     ///
     /// Content:
-    ///  - intents: basic
+    ///  - intents: support
     ///  - variant: outlined
     ///  - state: enabled
     ///  - content: text
@@ -248,7 +248,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
         return [
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: .text,
@@ -260,7 +260,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             ),
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: .text,
@@ -273,7 +273,7 @@ enum ProgressTrackerScenarioSnapshotTests: String, CaseIterable {
             ),
             .init(
                 scenario: self,
-                intent: .basic,
+                intent: .support,
                 variant: .outlined,
                 state: .normal,
                 contentType: .text,

@@ -26,9 +26,9 @@ final class ProgressTrackerIndicatorViewModelTests: XCTestCase {
 
         self.colorsUseCase
             .executeWithColorsAndIntentAndVariantAndStateReturnValue = .init(
-                background: self.theme.colors.basic.basicContainer,
-                outline: self.theme.colors.basic.onBasic,
-                content: self.theme.colors.basic.basic
+                background: self.theme.colors.support.supportContainer,
+                outline: self.theme.colors.support.onSupport,
+                content: self.theme.colors.support.support
             )
     }
 

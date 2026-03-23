@@ -23,7 +23,7 @@ struct ProgressTrackerGetTrackColorUseCase: ProgressTrackerGetTrackColorUseCasea
         case .neutral: return colors.feedback.neutral
         case .success: return colors.feedback.success
         case .support: return colors.support.support
-        default: return colors.basic.basic
+        default: return colors.support.support
         }
     }
 }

@@ -101,7 +101,7 @@ final class ProgressTrackerTrackViewModelTests: XCTestCase {
 
         let arguments = self.useCase.executeWithColorsAndIntentReceivedArguments
 
-        XCTAssertEqual(arguments?.intent, .support, "Expected argument of use case to be basic")
+        XCTAssertEqual(arguments?.intent, .support, "Expected argument of use case to be support")
     }
 
     func test_is_enabled_not_updated_no_line_color_updates() {
